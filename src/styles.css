@@ -23,7 +23,8 @@ html {
   Custom styles
 */
 body {
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  background: linear-gradient(to right, #92FE9D, #00C9FF);
 }
 
 @media (max-height: 600px) {
@@ -51,7 +52,7 @@ button {
 header {
   display: flex;
   height: var(--header-height);
-  border-bottom: 1px solid var(--color-gray-700);
+  border-bottom: 1px solid #ffffff6e;
   color: var(--color-gray-300);
 }
 
@@ -99,14 +100,30 @@ h1 {
 }
 
 .cell {
-  position: relative;
-  width: 20%;
-  display: grid;
-  place-content: center;
-  aspect-ratio: 1 / 1;
-  border: 2px solid var(--color-gray-700);
-  border-radius: var(--radius);
-  font-size: 2rem;
+    position: relative;
+    width: 20%;
+    display: grid;
+    place-content: center;
+    aspect-ratio: 1 / 1;
+    font-size: 2rem;
+    font-weight: 600;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    will-change: transform, backdrop-filter;
+    transform: translateY(0) scale(1);
+    transition: all 350ms ease-in-out;
+}
+
+.cell:hover {
+    transition: all 150ms ease-in-out;
+    transform: translateY(-3px) scale(1.01);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 44px rgba(31, 38, 135, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 4px 24px rgba(7, 124, 62, 0.2);
 }
 
 /*
@@ -150,30 +167,46 @@ h1 {
 }
 
 .guess-input-wrapper label {
-  font-size: 1.25rem;
+    color: #149fc4;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 8px;
+    text-align: center;
 }
 
 .guess-input-wrapper input {
-  display: block;
-  width: 100%;
-  font-size: 2rem;
-  border: 1px solid var(--color-gray-700);
-  border-radius: 4px;
-  padding: 8px 16px;
-  outline-offset: 4px;
-  transition: all 150ms ease-in-out;
+    display: block;
+    width: 100%;
+    font-size: 2rem;
+    border-radius: 10px;
+    padding: 8px 16px;
+    outline-offset: 4px;
+    transition: all 150ms ease-in-out;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    will-change: transform, backdrop-filter;
+    transition: all 150ms ease-in-out;
 }
 
 .guess-input-wrapper input:hover {
-    border-color: var(--color-success-hover);
-    background-color: var(--color-success-hover-bg);
+    border: 1px solid rgb(196, 250, 255);
+    box-shadow: 0 8px 32px rgba(27, 196, 185, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .guess-input-wrapper input:focus, .guess-input-wrapper input:focus-visible {
-    box-shadow: -4px -4px inset var(--color-success), 4px 4px inset var(--color-success);
-    background-color: white;
-    padding: 8px 16px;
+    transform: translateY(0) scale(1);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     outline: none;
+}
+
+.guess-input-desc {
+    text-align: center;
+    color: #807b7b78;
+    font-size: 12px;
 }
 
 .banner {

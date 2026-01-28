@@ -10,7 +10,8 @@ function GuessInput({onSetGuesses}) {
     }
     return <form className="guess-input-wrapper" onSubmit={handleSubmit}>
         <label htmlFor="guess-input">Enter guess:</label>
-        <input id="guess-input" type="text" value={guess} onChange={e => setGuess(e.target.value.toLocaleUpperCase().trim().slice(0, 5))} pattern="[A-Za-z]{5}" title="Five letter word" required />
+        <input id="guess-input" type="text" value={guess} autoComplete="off" autoFocus onChange={e => setGuess(e.target.value.toLocaleUpperCase().trim().slice(0, 5))} pattern="[A-Za-z]{5}" required />
+        <div className="guess-input-desc">Find the secret 5 letter word</div>
     </form>;
 }
 
