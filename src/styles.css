@@ -24,7 +24,7 @@ html {
 */
 body {
   font-family: 'Open Sans', sans-serif;
-  background: linear-gradient(to right, #92FE9D, #00C9FF);
+  background: linear-gradient(45deg, rgb(142, 197, 252) 0%, rgb(141, 211, 255) 25%, rgb(161, 216, 255) 50%, rgb(193, 210, 255) 75%, rgb(224, 195, 255) 100%);
 }
 
 @media (max-height: 600px) {
@@ -144,18 +144,11 @@ h1 {
 }
 
 .cell.correct {
-  background: var(--color-success);
-  border-color: var(--color-success);
-  color: white;
-}
-.cell.incorrect {
-  background: var(--color-gray-300);
-  border-color: var(--color-gray-300);
+  background: #00a859;
   color: white;
 }
 .cell.misplaced {
-  background: var(--color-warning);
-  border-color: var(--color-warning);
+  background: #e7c447;
   color: white;
 }
 
@@ -167,10 +160,11 @@ h1 {
 }
 
 .guess-input-wrapper label {
-    color: #149fc4;
+    color: #4076a6;
     text-transform: uppercase;
     font-size: 14px;
-    letter-spacing: 8px;
+    letter-spacing: 6px;
+    font-weight: 600;
     text-align: center;
 }
 
@@ -205,7 +199,7 @@ h1 {
 
 .guess-input-desc {
     text-align: center;
-    color: #807b7b78;
+    color: #5c94c6;
     font-size: 12px;
 }
 
