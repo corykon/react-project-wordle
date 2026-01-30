@@ -7,11 +7,9 @@ html {
   --game-spacing: 32px;
   --header-height: 4rem;
 
-  --color-success: hsl(150deg 70% 30%);
-    --color-success-hover: hsla(150, 70%, 30%, 0.5);
-    --color-success-hover-bg: hsla(150, 70%, 30%, 0.05);
+  --color-success: #00A859;
   --color-warning: hsl(50deg 100% 30%);
-  --color-error: hsl(0deg 70% 45%);
+  --color-error: #CC2027;
   --color-gray-100: hsl(0deg 0% 10%);
   --color-gray-300: hsl(0deg 0% 25%);
   --color-gray-500: hsl(0deg 0% 50%);
@@ -211,7 +209,7 @@ h1 {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  padding: 32px;
+  padding: 40px;
   text-align: center;
   animation: slideUp 750ms cubic-bezier(0, 0.72, 0.24, 1.02);
   border-radius: 10px 10px 0px 0px;
@@ -219,12 +217,38 @@ h1 {
   will-change: transform;
 }
 
+.play-again-button {
+    text-align: center;
+    border-radius: 10px;
+    width: 200px;
+    margin-top: 16px;
+    padding: 10px 20px;
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    will-change: transform, backdrop-filter;
+    border: 1px solid #ffffff4d;
+    place-content: center;
+    transition: all .35s ease-in-out;
+    overflow: hidden;
+    box-shadow: 0 8px 32px #1f268733, inset 0 0 0 1px #ffffff1a;
+    font-weight: 600;
+}
+
+.play-again-button:hover {
+    transition: all 150ms ease-in-out;
+    border: 1px solid #ffffff66;
+    box-shadow: 0 8px 44px #1f268733, inset 0 0 0 1px #ffffff33, 0 4px 24px #077c3e33;
+}
+
+.play-again-button:active {
+    box-shadow: 0 4px 16px #1f268733, inset 0 0 0 1px #ffffff1a;
+}
+
 .happy.banner {
-  background: var(--color-success);
+  background: #069a54;
   color: white;
 }
 .sad.banner {
-  background: var(--color-error);
+  background: #b91a1f;
   color: white;
 }
 

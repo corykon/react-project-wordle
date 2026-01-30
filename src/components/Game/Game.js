@@ -7,15 +7,13 @@ import GuessDisplay from "../GuessDisplay/GuessDisplay";
 import GameResult from "../GameResult/GameResult";
 import { checkGuess } from '../../game-helpers';
 
-// Pick a random word on every pageload.
-const answer = sample(WORDS);
-// To make debugging easier, we'll log the solution in the console.
-console.info('answer:', answer);
-
 function Game() {
+    const [answer, setAnswer] = React.useState(sample(WORDS));
     const [guesses, setGuesses] = React.useState([]);
     const [gameIsOver, setGameIsOver] = React.useState(false);
     const [gameIsWon, setGameIsWon] = React.useState(false);
+
+    console.info('answer:', answer);
     
     function handleNewGuess(newGuess) {
         const letters = checkGuess(newGuess, answer);
@@ -29,10 +27,18 @@ function Game() {
             setGameIsOver(true);
         }
     }
+
+    function resetGame() {
+        setAnswer(sample(WORDS));
+        setGuesses([]);
+        setGameIsOver(false);
+        setGameIsWon(false);
+    }
+
     return <>
         <GuessDisplay guesses={guesses} />
         <GuessInput onGuess={handleNewGuess} gameIsOver={gameIsOver} />
-        {gameIsOver && <GameResult answer={answer} gameIsWon={gameIsWon} guessCount={guesses.length} />}
+        {gameIsOver && <GameResult answer={answer} gameIsWon={gameIsWon} guessCount={guesses.length} reset={resetGame} />}
     </>;
 }
 
