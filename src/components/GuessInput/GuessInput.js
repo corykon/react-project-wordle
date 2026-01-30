@@ -1,6 +1,6 @@
 import React from 'react';
 
-function GuessInput({onGuess}) {
+function GuessInput({onGuess, gameIsOver}) {
     const [pendingGuess, setPendingGuess] = React.useState('');
     function handleSubmit(event) {
         event.preventDefault();
@@ -10,7 +10,7 @@ function GuessInput({onGuess}) {
     }
     return <form className="guess-input-wrapper" onSubmit={handleSubmit}>
         <label htmlFor="guess-input">Enter guess:</label>
-        <input id="guess-input" type="text" value={pendingGuess} autoComplete="off" autoFocus onChange={e => setPendingGuess(e.target.value.toLocaleUpperCase().trim().slice(0, 5))} pattern="[A-Za-z]{5}" required />
+        <input id="guess-input" type="text" value={pendingGuess} autoComplete="off" autoFocus onChange={e => setPendingGuess(e.target.value.toLocaleUpperCase().trim().slice(0, 5))} pattern="[A-Za-z]{5}" required disabled={gameIsOver}/>
         <div className="guess-input-desc">Find the secret 5 letter word</div>
     </form>;
 }
