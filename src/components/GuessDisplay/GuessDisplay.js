@@ -2,7 +2,7 @@ import React from 'react';
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 import { range } from "../../utils";
 
-function GuessDisplay({guesses}) {
+function GuessDisplay({guesses, answerLength}) {
     function getDescForLetterStatus(status) {
         switch (status) {
             case 'correct':
@@ -15,11 +15,15 @@ function GuessDisplay({guesses}) {
                 return '';
         }
     }
+    
+    // Use the actual answer length if provided, otherwise default to 5
+    const wordLength = answerLength || 5;
+    
     return <div className="guess-results">
         {range(0, NUM_OF_GUESSES_ALLOWED).map((index) => {
             const guess = guesses[index];
             return <p className="guess" key={index}>
-                {range(0, 5).map((i) => {
+                {range(0, wordLength).map((i) => {
                     const letter = guess?.letters[i];
                     const helpText = letter ? getDescForLetterStatus(letter.status) : '';
                     return <span key={i} title={helpText} className={`cell ${letter?.status}`}>{letter?.letter || ''}</span>;
