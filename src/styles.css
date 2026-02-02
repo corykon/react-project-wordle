@@ -190,6 +190,31 @@ h1 img {
   }
 }
 
+@media (max-width: 900px) {
+  h1 {
+    text-align: left;
+    justify-content: flex-start;
+    padding-left: 1rem;
+  }
+}
+
+@media (max-width: 780px) {
+  .game-wrapper {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  
+  header .side {
+    width: 32px;
+  }
+}
+
+@media (max-width: 650px) {
+  h1 {
+    font-size: 21px;
+  }
+}
+
 .game-wrapper {
     flex: 1;
     display: flex;
@@ -1779,4 +1804,285 @@ h1 img {
 .pokeball-wrapper.failure:hover {
     background: rgba(185, 26, 31, 0.3);
     border-color: rgba(185, 26, 31, 0.7);
+}
+/* Celebration Animations */
+.celebration-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px) saturate(180%);
+    -webkit-backdrop-filter: blur(8px) saturate(180%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: celebrationFadeIn 0.5s ease-out;
+    transition: opacity 0.8s ease-out;
+}
+
+.celebration-overlay.progress-celebration {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.celebration-content {
+    text-align: center;
+    background: #ffffffdd;
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    max-width: 90%;
+    position: relative;
+    z-index: 2;
+    transition: all 0.8s ease-out;
+}
+
+.master-content {
+    width: 90vw;
+    padding: 3rem;
+}
+
+.progress-content {
+    max-width: 400px;
+    padding: 2rem;
+}
+
+.celebration-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #2d3748;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.progress-title {
+    font-size: 2rem;
+}
+
+.celebration-image {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem auto;
+    display: block;
+}
+
+.master-image {
+    max-height: 300px;
+}
+
+.progress-image {
+    max-height: 200px;
+}
+
+.celebration-message {
+    font-size: 1.2rem;
+    color: #4a5568;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.master-message {
+    font-size: 1.4rem;
+}
+
+.progress-message {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.celebration-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    width: 300px;
+    text-align: center;
+    position: relative;
+    z-index: 100;
+    overflow: visible;
+}
+
+.celebration-button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.celebration-button:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* Confetti Animation */
+.confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    border-radius: 2px;
+    animation: confettiFall 3s linear infinite;
+}
+
+.hooray-confetti {
+    width: 12px;
+    height: 12px;
+    animation: hoorayConfettiFall 2s linear infinite;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@keyframes hoorayConfettiFall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(50vh) rotate(360deg) scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg) scale(0.8);
+        opacity: 0;
+    }
+}
+
+@keyframes celebrationFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.celebration-overlay.fade-out {
+    opacity: 0;
+}
+
+.celebration-overlay.fade-out .celebration-content {
+    transform: scale(0.9);
+    opacity: 0;
+}
+
+/* Trophy Icon Styling */
+.trophy-icon {
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+}
+
+.header-trophy {
+    display: inline-flex;
+    align-items: center;
+    animation: trophyGlow 2s ease-in-out infinite alternate;
+}
+
+.pokedex-trophy {
+    margin-left: 8px;
+}
+
+@keyframes trophyGlow {
+    from {
+        filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+    }
+    to {
+        filter: drop-shadow(0 2px 8px rgba(255, 215, 0, 0.6));
+    }
+}
+
+/* Celebration Progress Bar */
+.celebration-progress-container {
+    margin: 1.5rem 0;
+    width: 100%;
+}
+
+.celebration-progress-bar {
+    width: 100%;
+    height: 12px;
+    background: #b4b4b433;
+    border-radius: 6px;
+    overflow: hidden;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 0.5rem;
+}
+
+.celebration-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10B981 0%, #34D399 50%, #6EE7B7 100%);
+    border-radius: 6px;
+    transition: width 0.8s ease-out;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+    animation: progressFillUp 1.5s ease-out;
+    animation-delay: 0.5s;
+    animation-fill-mode: both;
+}
+
+.master-progress-fill {
+    background: linear-gradient(90deg, #FFD700 0%, #FFA500 50%, #FF6347 100%);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    animation: masterProgressFillUp 1.5s ease-out;
+}
+
+.celebration-progress-text {
+    font-size: 0.9rem;
+    color: #4a5568;
+    font-weight: 600;
+    text-align: center;
+}
+
+@keyframes progressFillUp {
+    from {
+        width: 0%;
+    }
+    to {
+        width: var(--target-width, 100%);
+    }
+}
+
+@keyframes masterProgressFillUp {
+    0% {
+        width: 0%;
+        box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    }
+    100% {
+        width: 100%;
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    }
 }

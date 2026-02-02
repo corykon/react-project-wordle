@@ -2,7 +2,7 @@ import React from 'react';
 import pokeballIcon from '../../assets/pokeball.svg';
 import searchIcon from '../../assets/search.svg';
 
-function Pokedex({ isOpen, onClose, pokemonList, discoveredPokemon, highlightPokemonId }) {
+function Pokedex({ isOpen, onClose, pokemonList, discoveredPokemon, highlightPokemonId, isMaster, trophyIcon }) {
     const [searchTerm, setSearchTerm] = React.useState('');
     const [pokemonDescriptions, setPokemonDescriptions] = React.useState({});
     const [pokemonTypes, setPokemonTypes] = React.useState({});
@@ -223,7 +223,10 @@ function Pokedex({ isOpen, onClose, pokemonList, discoveredPokemon, highlightPok
                             ></div>
                         </div>
                         <div className="progress-text">
-                            {discoveredPokemon.length}/151 ({Math.round((discoveredPokemon.length / 151) * 100)}%)
+                            <span className={isMaster ? "header-trophy" : ""}>
+                                {discoveredPokemon.length}/151 ({Math.round((discoveredPokemon.length / 151) * 100)}%)
+                                {isMaster && <img src={trophyIcon} alt="Pokémon Master" className="trophy-icon pokedex-trophy" />}
+                            </span>
                         </div>
                     </div>
                     <div className="search-sort-row">

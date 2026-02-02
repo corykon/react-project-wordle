@@ -162,6 +162,7 @@ function Game({ onPokemonDiscovered, onPokemonListLoaded, onOpenPokedex }) {
     const [catchCount, setCatchCount] = React.useState(0);
     const [showBanner, setShowBanner] = React.useState(true);
     const [consecutiveRepeats, setConsecutiveRepeats] = React.useState(0);
+    const [hasPlayedAgain, setHasPlayedAgain] = React.useState(false);
 
     // Function to select a new Pokemon and get its description
     async function selectNewPokemon(pokemonList) {
@@ -260,11 +261,11 @@ function Game({ onPokemonDiscovered, onPokemonListLoaded, onOpenPokedex }) {
                     onPokemonDiscovered(currentPokemon.id);
                 }
                 
-                // Auto-open Pokedex for new discoveries
-                if (!wasAlreadyDiscovered && onOpenPokedex) {
+                // Auto-open Pokedex for new discoveries (but not if user clicked play again)
+                if (!wasAlreadyDiscovered && onOpenPokedex && !hasPlayedAgain) {
                     setTimeout(() => {
                         onOpenPokedex(currentPokemon.id);
-                    }, 3000); // Wait 2 seconds to let user read the success message
+                    }, 3000); // Wait 3 seconds to let user read the success message
                 }
             }
         } else if (newGuesses.length >= 6) {
@@ -274,6 +275,7 @@ function Game({ onPokemonDiscovered, onPokemonListLoaded, onOpenPokedex }) {
 
     function resetGame() {
         if (pokemonList.length > 0) {
+            setHasPlayedAgain(true);  // Track that user clicked play again
             selectNewPokemon(pokemonList);
             setGuesses([]);
             setGameIsOver(false);

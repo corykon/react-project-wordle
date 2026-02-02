@@ -3,7 +3,7 @@ import squirtleImage from '../../assets/squirtle.png';
 import refreshIcon from '../../assets/refresh.svg';
 import pokeballIcon from '../../assets/pokeball.svg';
 
-function Header({ onReset, onOpenPokedex, discoveredCount, totalCount }) {
+function Header({ onReset, onOpenPokedex, discoveredCount, totalCount, isMaster, trophyIcon }) {
   const handlePokedexClick = (event) => {
     event.preventDefault();
     if (onOpenPokedex) {
@@ -24,7 +24,10 @@ function Header({ onReset, onOpenPokedex, discoveredCount, totalCount }) {
       <h1><img src={squirtleImage} alt="Squirtle" /><span>Squirtle Wordle</span>
         <div className="header-buttons">
           <div className="pokemon-count" title={`You've caught ${discoveredCount} out of ${totalCount} Pokémon`}>
-            {discoveredCount}/{totalCount}
+            <span className={isMaster ? "header-trophy" : ""}>
+              {discoveredCount}/{totalCount}
+              {isMaster && <img src={trophyIcon} alt="Pokémon Master" className="trophy-icon" />}
+            </span>
           </div>
           {onOpenPokedex && (
             <button 
