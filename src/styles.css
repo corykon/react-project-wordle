@@ -120,6 +120,7 @@ h1 img {
     cursor: pointer;
     backdrop-filter: blur(10px);
     position: relative;
+    z-index: 1000;
 }
 
 /* Tooltip Styles */
@@ -138,7 +139,7 @@ h1 img {
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
     pointer-events: none;
-    z-index: 1000;
+    z-index: 10000;
 }
 
 .tooltip::after {
@@ -194,7 +195,6 @@ h1 img {
   h1 {
     text-align: left;
     justify-content: flex-start;
-    padding-left: 1rem;
   }
 }
 
@@ -367,7 +367,7 @@ h1 img {
 }
 
 .pokemon-hint {
-    height: 84px;
+    min-height: 84px;
     text-align: center;
     color: #e5e7eb;
     font-size: 16px;
